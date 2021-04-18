@@ -182,4 +182,8 @@ def mean_average_precision(
 
     return sum(average_precisions) / len(average_precisions)
 
+def subset_of_data(fraction=1.0):
+  names = glob.glob(f'{DIR_ANNOTATIONS}/palm*.xml')
+  np.random.shuffle(names)
+  return names[:int(len(names)*fraction)]
 
