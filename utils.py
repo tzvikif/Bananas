@@ -8,7 +8,7 @@ import tifffile as tif
 import rasterio as rs
 from rasterio.plot import show
 from collections import Counter
-
+import glob
 
 
 
@@ -182,8 +182,8 @@ def mean_average_precision(
 
     return sum(average_precisions) / len(average_precisions)
 
-def subset_of_data(fraction=1.0):
-  names = glob.glob(f'{DIR_ANNOTATIONS}/palm*.xml')
+def subset_of_data(annonations_path,fraction=1.0):
+  names = glob.glob(f'{annonations_path}/palm*.xml')
   np.random.shuffle(names)
   return names[:int(len(names)*fraction)]
 
